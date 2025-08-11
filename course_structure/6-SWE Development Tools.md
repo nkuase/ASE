@@ -37,7 +37,7 @@ In 200-level ASE courses, students are expected to have basic familiarity with:
 - **Markdown** – Lightweight text formatting for docs and READMEs  
   - **Marp** - Presentation
 - **JSON** – Structured data for configuration and APIs  
-- **YAML** – Human-readable configuration and data serialization  
+- **YAML/TOML** – Human-readable configuration and data serialization  
 
 ---
 

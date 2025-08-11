@@ -34,9 +34,10 @@ paginate: true
 ## Projects (35%)
 
 - **Team Project** – 200 pts (20%)
-  - For the courses with no team project, another individual project is added.
 - **Individual Project** – 150 pts (15%)  
 - Regular status updates to communicate progress.
+- *For online courses (40%)*:
+  - Two Individual projects (20% + 20%)
 
 ---
 
@@ -54,6 +55,7 @@ paginate: true
 - Total: 50 pts  
 - Held at the start of class to review key ideas.  
 - Points awarded for all submissions, even blank.
+- For online courses (0%)
 
 ---
 
