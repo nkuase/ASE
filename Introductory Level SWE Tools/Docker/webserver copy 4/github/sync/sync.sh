@@ -1,0 +1,1 @@
+sh github/sync/push.sh && ssh macbuntu "cd ~/srv/github/sync && sh pull.sh"

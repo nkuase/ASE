@@ -1,0 +1,24 @@
+#!/bin/bash
+# .git/hooks/post-commit
+
+echo "=== Post-commit Hook ==="
+
+# Push
+echo "🚀 GitHub Pushing..."
+git push origin main
+
+if [ $? -eq 0 ]; then
+    echo "✅ Push OK!"
+    
+    # Push Success & Check
+    echo "🔄 Remote Pull..."
+    git pull origin main
+    
+    if [ $? -eq 0 ]; then
+        echo "✅ Sync OK"
+    else
+        echo "⚠️  Pull Failure - Check manually"
+    fi
+else
+    echo "❌ Push Failure"
+fi

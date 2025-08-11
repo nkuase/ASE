@@ -1,0 +1,12 @@
+{
+  "name": "Marp Presentation Environment",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "marp-team.marp-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install -g @marp-team/marp-cli"
+}

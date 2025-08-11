@@ -1,0 +1,13 @@
+# .gitpod.yml
+tasks:
+  - name: Setup Marp
+    init: npm install -g @marp-team/marp-cli
+    command: echo "Marp environment ready!"
+
+vscode:
+  extensions:
+    - marp-team.marp-vscode
+
+ports:
+  - port: 8080
+    onOpen: open-browser

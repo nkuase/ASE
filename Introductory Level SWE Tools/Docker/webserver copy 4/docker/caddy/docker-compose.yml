@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /home/smcho/srv/www:/usr/share/caddy:ro
+      - /home/smcho/srv/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: always
+
+volumes:
+  caddy_data:
+  caddy_config:
