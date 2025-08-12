@@ -71,6 +71,7 @@ To become competent, we must understand what works—and what doesn’t.
 3. Write down the **solution**.
 
 - His point is clear: If you can’t **define** the problem, you can’t solve it.
+- Thinking hard is not possible when we don't know what to think.
 
 ---
 
