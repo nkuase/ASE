@@ -1,15 +1,15 @@
 ---
-theme: presentation_style
 marp: true
 html: true
 size: 4:3
 paginate: true
 ---
 
+<!-- _class: lead -->
 <!-- _class: frontpage -->
 <!-- _paginate: skip -->
 
-# The Structure of
+# P4M4: The Structure of
 
 # Dr.Cho's ASE Courses
 

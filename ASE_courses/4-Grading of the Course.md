@@ -1,11 +1,11 @@
 ---
-theme: presentation_style
 marp: true
 html: true
 size: 4:3
 paginate: true
 ---
 
+<!-- _class: lead -->
 <!-- _class: frontpage -->
 <!-- _paginate: skip -->
 
@@ -31,13 +31,17 @@ paginate: true
 
 ---
 
-## Projects (35%)
+## Projects (35% or 40%)
+
+For F2F coruses (35%)
 
 - **Team Project** – 200 pts (20%)
 - **Individual Project** – 150 pts (15%)  
 - Regular status updates to communicate progress.
-- *For online courses (40%)*:
-  - Two Individual projects (20% + 20%)
+
+*For online courses (40%)*:
+
+- Two Individual projects (20% + 20%)
 
 ---
 
@@ -50,7 +54,7 @@ paginate: true
 
 ---
 
-## Daily Quizzes (5%)
+## Daily Quizzes (5% or 0%)
 
 - Total: 50 pts  
 - Held at the start of class to review key ideas.  
@@ -100,7 +104,7 @@ li { font-size: 26pt !important; line-height: 1.2 !important;}
 
 ## Apply the P4M4 Model
 
-1. Projects Are Your Priority
+1. Projects Are Your **Priority**
 
 - Add at least one project to your portfolio after every course.
 
@@ -112,7 +116,7 @@ li { font-size: 26pt !important; line-height: 1.2 !important;}
 
 3. Begin with the Magic, Grow with Principles
 
-- Start without overthinking; discover the principles powering the "magic."
+- Start without overthinking; discover the principles powering the "Magic."
 
 4. Master Many Patterns
 

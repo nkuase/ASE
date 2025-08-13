@@ -1,17 +1,23 @@
 ---
-theme: presentation_style
 marp: true
 html: true
 size: 4:3
 paginate: true
+style: |
+  img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+  }
+    img[alt~="outline"] {
+    border: 2px solid #388bee;
+  }
 ---
 
+<!-- _class: lead -->
 <!-- _class: frontpage -->
 <!-- _paginate: skip -->
 
-# The Architecture of
-
-# the ASE Program
+# The Architecture of the ASE Program
 
 ---
 
@@ -19,11 +25,14 @@ paginate: true
 
 - Students build high-quality client/server applications to solve any given software engineering problems.
 
+<br>
+<br>
+
 ![w:260pt center](./pic/ASE.png)
 
 ---
 
-## ASE Students can Solve Problems: 4D
+## 4D: The Tool for SWE Problem Solving
 
 <style scoped>
 li { font-size: 29pt !important; line-height: 1.2 !important;}
@@ -36,11 +45,11 @@ li { font-size: 29pt !important; line-height: 1.2 !important;}
 
 ---
 
-## ASE Students Know How to: APT
+## APT: The Goal ASE Students Master
 
 1. How to build High-quality **A**pplications
-2. How to apply SE **P**rocesses
-3. How to use SE Development **T**ools
+2. How to apply SWE **P**rocesses
+3. How to use SWE Development **T**ools
 
 *ASE students can complete tasks independently or collaboratively.*
 

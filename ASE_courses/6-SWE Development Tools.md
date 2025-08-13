@@ -1,30 +1,44 @@
 ---
-theme: presentation_style
 marp: true
 html: true
 size: 4:3
 paginate: true
+style: |
+  .columns {
+    display: flex;
+    gap: 2rem;
+    justify-content: center; /* centers horizontally */
+    align-items: center;     /* centers vertically */ 
+  }
+  .column {
+    flex: 1;
+  }
+  
 ---
 
+<!-- _class: lead -->
 <!-- _class: frontpage -->
 <!-- _paginate: skip -->
-# Core Skills for ASE Students  
+
+# Core SWE Skills for ASE Students  
 
 **Essential Tools for Modern App Development**
 
 ---
 
-## Introductory Level
+## SWE Tools Level 1 (Introductory)
 
-In 200-level ASE courses, students are expected to have basic familiarity with:
+In 200-level ASE courses, ASE students are expected to have basic familiarity with:
 
-- **Tools**
+- **SWE Tools**
 - **Documentation Formats**
 - **Programming Languages**
 
+*Visit <https://github.com/nkuase/ASE> and choose "SWE Tools L1" for detailed guide.*
+
 ---
 
-### 🛠 Tools
+### 🛠 SWE Tools
 
 - **VSCode** – Code editing and extensions  
 - **Git & GitHub** – Version control and collaboration  
@@ -49,16 +63,25 @@ In 200-level ASE courses, students are expected to have basic familiarity with:
 
 ---
 
+## Level 2 (Project)
+
+In 300/400 level ASE courses, students are expected to have basic familiarity with:
+
+- **Team Tools**
+- **Project Tools**
+
+---
+
 ### Don’t Worry
 
 <style scoped>
 li { font-size: 28pt !important; line-height: 1.2 !important;}
 </style>
 
-- It’s fine if you’re not familiar with these tools **yet**  
+- It is OK fine if you’re not familiar with these tools **yet**  
 - Jump in and start using them for your projects  
 - They’re just problem-solving tools  
-- With practice, you’ll master these — and more — faster than you think
+- With practices, you’ll master these — and more — faster than you think
 
 ---
 
@@ -78,9 +101,9 @@ li { font-size: 28pt !important; line-height: 1.2 !important;}
 
 ---
 
-## Tools for ASE Courses
+## ASE Courses and SWE Tools
 
-> **Notice:** This list is a guideline — specific tools may vary by instructor or other factors.  
+> **Notice:** This list is a guideline; you will use more tools in ASE courses and beyond.
 > **Remember:** ASE students are expected to master all these tools (and more) before entering real-world software engineering.
 
 ---
@@ -90,59 +113,179 @@ li { font-size: 28pt !important; line-height: 1.2 !important;}
 
 ---
 
-### ASE 220
+### ASE 220 (API-Client-Server Focus)
 
-- **JavaScript**  
-- CSS  
-- HTML  
+<style>
+.column.text {
+  flex: 6;
+}
+.column.image {
+  flex: 4;
+}
+</style>
+
+<div class="columns">
+  <div class="column text">
+
+- **JavaScript**/CSS/HTML  
+- **NodeJS**/**MongoDB**
+
+  </div>
+  <div class="column image">
+
+![w:500pt center](./pic/ASE220.png)
+
+  </div>
+</div>  
+
+---
+
+### ASE 230 (Server-Side Focus)
+
+<style>
+.column.text {
+  flex: 6;
+}
+.column.image {
+  flex: 4;
+}
+</style>
+
+<div class="columns">
+  <div class="column text">
+
+- **PHP** & **MySQL**
+
+REST API Tools:
+
+- **Curl**
+- JavaScript/HTML/CSS
 
 **Optional:**
 
-- *React*
+- *Docker* for Deployment
+
+  </div>
+  <div class="column image">
+
+![w:500pt center](./pic/ASE230.png)
+
+  </div>
+</div>  
 
 ---
 
-### ASE 230
+### ASE 285 (SWE & Security Focus)
 
-- **PHP** & **MySQL** (or other SQL DB) — Server-side development  
-- JavaScript / HTML / CSS — Client-side development  
+<style>
+.column.text {
+  flex: 6;
+}
+.column.image {
+  flex: 4;
+}
+</style>
 
-**Optional:**
+<div class="columns">
+  <div class="column text">
 
-- *Docker* for development
+Programming Language:
 
----
+- **Node.js**, *React*, *TypeScript*
 
-### ASE 285
+Database:
 
-- **Node.js**  
-- **MongoDB** (or other NoSQL DB)  
-- Security tools: **PGP**, **SSH**  
-- **Git** / **GitHub**  
+- **MongoDB**
 
-**Optional:**
+Security:
 
-- *React*, *TypeScript*
+- **PGP**, **SSH**  
 
----
+  </div>
+  <div class="column image">
 
-### ASE 330
+![w:500pt center](./pic/ASE285.png)
 
-- UX/UI tools
-
----
-
-### ASE 420
-
-- **Python**  
-  - Virtual environments  
-  - PIP  
-  - UV/UXR  
-  - PyTest  
+  </div>
+</div>  
 
 ---
 
-### ASE 456
+### ASE 330 (UI/UX Focus)
+
+<style>
+.column.text {
+  flex: 6;
+}
+.column.image {
+  flex: 4;
+}
+</style>
+
+<div class="columns">
+  <div class="column text">
+
+Product Design Tools
+
+- Customer persona
+- KANO Model
+- SCAMPER technique
+- TRIZ framework
+
+  </div>
+  <div class="column image">
+
+![w:500pt center](./pic/ASE330.png)
+
+  </div>
+</div>  
+
+---
+
+### ASE 420 (Software Design Focus)
+
+<style>
+.column.text {
+  flex: 6;
+}
+.column.image {
+  flex: 4;
+}
+</style>
+
+<div class="columns">
+  <div class="column text">
+
+**Python**  
+
+- Virtual environments  
+- PIP  
+- UV/UXR  
+- PyTest  
+
+  </div>
+  <div class="column image">
+
+![w:500pt center](./pic/ASE420.png)
+
+  </div>
+</div>  
+
+---
+
+### ASE 456 (Crossplatform Focus)
+
+<style>
+.column.text {
+  flex: 6;
+}
+.column.image {
+  flex: 4;
+}
+</style>
+
+<div class="columns">
+  <div class="column text">
 
 - **Flutter/Dart**  
 - Databases: **PocketBase**, **Firebase**, SQLite, IndexedDB  
@@ -152,9 +295,29 @@ li { font-size: 28pt !important; line-height: 1.2 !important;}
 - *Electron*  
 - *React Native*
 
+  </div>
+  <div class="column image">
+
+![w:500pt center](./pic/ASE456.png)
+
+  </div>
+</div>  
+
 ---
 
-### ASE 485
+### ASE 485 (Capstone)
+
+<style>
+.column.text {
+  flex: 6;
+}
+.column.image {
+  flex: 4;
+}
+</style>
+
+<div class="columns">
+  <div class="column text">
 
 - Client/server programming  
 - Database programming  
@@ -162,3 +325,11 @@ li { font-size: 28pt !important; line-height: 1.2 !important;}
 - UX/UI tools  
 - Documentation tools  
 - Deployment tools
+
+  </div>
+  <div class="column image">
+
+![w:500pt center](./pic/ASE485.png)
+
+  </div>
+</div>

@@ -1,11 +1,11 @@
 ---
-theme: presentation_style
 marp: true
 html: true
 size: 4:3
 paginate: true
 ---
 
+<!-- _class: lead -->
 <!-- _class: frontpage -->
 <!-- _paginate: skip -->
 # Course Rules
@@ -23,12 +23,14 @@ li { font-size: 25pt !important; line-height: 1.2 !important;}
 1. Integrity First Rule
 2. Two Hats Rule
 
-*Professor Rule*
+*Professor/TA Rule*
 
 1. Be fair Rule
 2. Help Students Become Skilled Problem Solvers Rule
 
 ---
+
+## Students Rules
 
 1. Integrity First Rule – Protect Your Integrity
 
@@ -45,7 +47,7 @@ li { font-size: 25pt !important; line-height: 1.2 !important;}
 
 ---
 
-## Professor Rule
+## Professor/TA Rules
 
 1. Be Fair
 
