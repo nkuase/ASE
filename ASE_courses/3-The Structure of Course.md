@@ -3,6 +3,14 @@ marp: true
 html: true
 size: 4:3
 paginate: true
+style: |
+  img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+  }
+    img[alt~="outline"] {
+    border: 2px solid #388bee;
+  }
 ---
 
 <!-- _class: lead -->
