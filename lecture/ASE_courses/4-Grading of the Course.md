@@ -16,9 +16,9 @@ paginate: true
 ## Total: 1000 Points
 
 - **5 Assignments** – 250 pts  
-- **2 Projects** – 350 pts  
+- **2 Projects** – 350 pts  (400 pts for ONL)
 - **2 Midterms** – 350 pts  
-- **Daily Quizzes** – 50 pts  
+- **Daily Quizzes** – 50 pts  (0 points for ONL)
 - **Bonus** – up to 50 pts
 
 ---
@@ -39,7 +39,7 @@ For F2F coruses (35%)
 - **Individual Project** – 150 pts (15%)  
 - Regular status updates to communicate progress.
 
-*For online courses (40%)*:
+*For ONL (online) courses (40%)*:
 
 - Two Individual projects (20% + 20%)
 
@@ -59,7 +59,7 @@ For F2F coruses (35%)
 - Total: 50 pts  
 - Held at the start of class to review key ideas.  
 - Points awarded for all submissions, even blank.
-- For online courses (0%)
+- For ONL (online) courses (0%)
 
 ---
 
