@@ -213,7 +213,7 @@ On Windows, you should add `code` to your PATH environment.
 
 ---
 
-2. Open `View advanced system settings` and Open `Environment Variables`.
+2. Open `View advanced system settings` and `Environment Variables`.
 
 ![w:300pt center](./pic/vscode/path1.png)
 ![h:200pt center](./pic/vscode/path2.png)
@@ -228,7 +228,7 @@ On Windows, you should add `code` to your PATH environment.
 
 ## Use code on Terminal
 
-When `code` program is in your path, you can open VSCode using command line.
+When the `code` program is in your path, you can open VSCode using the command line.
 
 - This example shows how we can open the `ASE` directory using `code` on a command line.
 

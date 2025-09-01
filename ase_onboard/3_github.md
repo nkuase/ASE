@@ -179,7 +179,7 @@ We can download the whole repository using the "Download ZIP" menu.
 
 1. Open **VSCode**
 
-2. Using VSCode Start Menu, you can choose "Clone Git Repository"
+2. Using the VSCode Start Menu, you can choose "Clone Git Repository"
 
 ![w:200pt](./pic/git/repository/start.png)
 
@@ -215,7 +215,7 @@ https://github.com/YOUR_ID/my-first-repo.git
 
 ![w:200pt](./pic/git/repository/signin.png)
 
-5. (After signing in) choose a **local folder** where you want to save the project
+5. (After signing in) Choose a **local folder** where you want to save the project
 
 ---
 
@@ -237,7 +237,7 @@ https://github.com/YOUR_ID/my-first-repo.git
 ## (Optional) Cloning with VSCode 2: Using Terminal
 
 1. Open **Terminal** in VSCode (`Ctrl+``)
-2. Navigate to desired directory:
+2. Navigate to the desired directory:
 
    ```bash
    cd /path/to/your/projects
@@ -259,7 +259,7 @@ https://github.com/YOUR_ID/my-first-repo.git
 
 ## Making Your First Changes
 
-1. Open `README.md` file in VSCode
+1. Open the `README.md` file in VSCode
 
 2. Add any content (for example):
 
@@ -278,7 +278,7 @@ https://github.com/YOUR_ID/my-first-repo.git
 ### Commit the Change (to local repo)
 
 1. Click the **Source Control** icon in sidebar (or `Ctrl+Shift+G`)
-2. You'll see **"Changes"** section with modified files
+2. You'll see the **"Changes"** section with modified files
 4. **Commit**: Enter commit message and click **"Commit"**
 
 ![w:200pt](./pic/git/repository/commit1.png)
@@ -287,17 +287,17 @@ https://github.com/YOUR_ID/my-first-repo.git
 
 ### Push the Change (to remove GitHub repo)
 
-1. When you push your changes to GitHub, click "Sync Change" or "push" button (red rectangles).
+1. When you push your changes to GitHub, click "Sync Change" or the "push" button (red rectangles).
 
 ![w:150pt](./pic/git/repository/push.png)
 
-2. When you pull others' changes to your local repository click the "pull" button (blue rectangle).
+2. When you pull others' changes to your local repository, click the "pull" button (blue rectangle).
 
 ---
 
 ### (Optional) Resolving Possible Multiple GitHub Ids Issue
 
-When you have multiple GitHub Ids, you may have the following error:
+When you have multiple GitHub IDs, you may have the following error:
 
 ```txt
 remote: Permission to nkuase/my-first-repo.git denied to prosseek.

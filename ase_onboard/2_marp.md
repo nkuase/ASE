@@ -40,8 +40,8 @@ style: |
 
 ## What is Marp?
 
-- Marp is a compiler that transforms the markdown text file into a presentation file formats, such as, PPT, PDF, and HTML.
-- This PDF file is made with Marp, and you should be able to read marp source file (2_marp.md) using VSCode & Marp extension.
+- Marp is a compiler that transforms the markdown text file into presentation file formats, such as PPT, PDF, and HTML.
+- This PDF file is made with Marp, and you should be able to read the marp source file (2_marp.md) using VSCode & Marp extension.
 
 ---
 
@@ -59,7 +59,7 @@ style: |
   </div>
   <div class="column">
 
-- From the Extensions side bar, choose Marp.
+- From the Extensions sidebar, choose Marp.
 
   </div>
 
@@ -101,11 +101,11 @@ style: |
 
 ## For the ASE courses
 
-1. When reading md (Marp/Markdown format) files (homework or project files), use VSCode and the preview menu to read the files.
+1. When reading MD (Marp/Markdown format) files (homework or project files), use VSCode and the preview menu to read the files.
 2. When reading PDF files, you can use the `VSCode PDF extension` to read the PDF files.
 3. When making code, you can use any programming extensions, and use the terminal to compile & run code.
 
-In short, you can use VSCode to do anything for ASE course activities.
+In short, you can use VSCode to complete any ASE course activity.
 
 ---
 
@@ -113,5 +113,5 @@ In short, you can use VSCode to do anything for ASE course activities.
 
 This directory has all the Marp source files.
 
-- Use VSCode and Marp extension to read markdown files.
-- Use them to convert the Marp (md) files into pdf files.
+- Use VSCode and the Marp extension to read markdown files.
+- Use them to convert the Marp (md) files into PDF files.
