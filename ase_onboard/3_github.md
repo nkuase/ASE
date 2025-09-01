@@ -122,20 +122,11 @@ We can download the whole repository using the "Download ZIP" menu.
 
 ### Clone (sync) with `git clone` command
 
-- In a command line (terminal), we can use the `git clone` command to clone (sync) the repository.
 - You can get the repository location from the menu.
 
 ![w:300pt center](./pic/git/github/github3.png)
 
----
-
-In this example, we clone the ASE repository; however, we can clone any repository from GitHub.
-
-```bash
-git clone https://github.com/nkuase/ASE.git
-```
-
-- Open the cloned directory using VSCode and use the content (code, lecture MD source, PDF) for the course.
+- You can clone any repositories in VSCode or using your terminal (explained in the "Cloning with VSCode" section).
 
 ---
 
@@ -182,14 +173,23 @@ git clone https://github.com/nkuase/ASE.git
 
 ---
 
-## Cloning with VSCode 1
+## Cloning with VSCode
 
-### Step 1: Using VSCode Command Palette
+### Step 1: Open VSCode and Find Repository
 
 1. Open **VSCode**
-2. Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (Mac)
-3. Type: **"Git: Clone"**
-4. Press Enter
+
+2. Using VSCode Start Menu, you can choose "Clone Git Repository"
+
+![w:200pt](./pic/git/repository/start.png)
+
+---
+
+3. (Optional) You can also clone the repository using Command Palette.
+
+Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (Mac)
+
+Type: **"Git: Clone"** and press Enter
 
 ![w:300pt](./pic/git/repository/clone1.png)
 
@@ -197,18 +197,25 @@ git clone https://github.com/nkuase/ASE.git
 
 ### Step 2: Enter Repository URL
 
-1-1. (Recommended) In the menu, click "Clone from GitHub" and select the repository you made.
+1. In the menu, click "Clone from GitHub" and select the repository you made.
 
 ![w:300pt](./pic/git/repository/clone_from_github.png)
 
-1-2. Paste your repository URL:
+2. (Optional) You can also paste your repository URL (for example):
 
 ```bash
 https://github.com/YOUR_ID/my-first-repo.git
 ```
 
-2. Press **Enter**
-3. Choose a **local folder** where you want to save the project
+3. Press **Enter**
+
+---
+
+4. VSCode may ask you to sign in to your GitHub account.
+
+![w:200pt](./pic/git/repository/signin.png)
+
+5. (After signing in) choose a **local folder** where you want to save the project
 
 ---
 
@@ -216,7 +223,8 @@ https://github.com/YOUR_ID/my-first-repo.git
 
 1. VSCode will ask: **"Would you like to open the cloned repository?"**
 2. Click **"Open"**
-3. Your repository files will appear in the Explorer panel
+3. Your repository files will appear in the Explorer panel.
+4. When the prompt appears, you can choose to "Trust Folder & Enable All Features" to grant full functionality to the workspace.
 
 ### What you see:
 
@@ -226,7 +234,7 @@ https://github.com/YOUR_ID/my-first-repo.git
 
 ---
 
-## Cloning with VSCode 2: Using Terminal
+## (Optional) Cloning with VSCode 2: Using Terminal
 
 1. Open **Terminal** in VSCode (`Ctrl+``)
 2. Navigate to desired directory:
@@ -252,24 +260,22 @@ https://github.com/YOUR_ID/my-first-repo.git
 ## Making Your First Changes
 
 1. Open `README.md` file in VSCode
-   1. Create `README.md` if you did not make one.
+
 2. Add any content (for example):
 
    ```markdown
    # My First Repository
    
-   This is my learning project for Git and GitHub!
-   
-   ## What I learned:
-   - Creating repositories
-   - Cloning repositories
-   - Making commits
-   - Pushing changes
+    ...
    ```
+
+3. VSCode will show that there is a change to commit (to local) & pull (to GitHub).
+
+![w:200pt](./pic/git/repository/change.png)
 
 ---
 
-### Commit
+### Commit the Change (to local repo)
 
 1. Click the **Source Control** icon in sidebar (or `Ctrl+Shift+G`)
 2. You'll see **"Changes"** section with modified files
@@ -279,7 +285,7 @@ https://github.com/YOUR_ID/my-first-repo.git
 
 ---
 
-### Push
+### Push the Change (to remove GitHub repo)
 
 1. When you push your changes to GitHub, click "Sync Change" or "push" button (red rectangles).
 
@@ -289,7 +295,7 @@ https://github.com/YOUR_ID/my-first-repo.git
 
 ---
 
-### Multiple GitHub Ids
+### (Optional) Resolving Possible Multiple GitHub Ids Issue
 
 When you have multiple GitHub Ids, you may have the following error:
 
