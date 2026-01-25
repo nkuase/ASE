@@ -1,0 +1,14 @@
+Subject: ASE 285 - Team 'Early Starter'
+To: chos5@nku.edu
+
+Hello, Dr. Cho.
+
+This is the team information for the team project:
+- Team name: Early Starter
+- Team leader: Ken Johnson (johnsonk5@nku.edu)
+- Team members:
+  - Tim Brown (brownt5@nku.edu)
+  - Jane Smith (smithj6@nku.edu)
+  - 
+Thanks,
+Ken Johnson
