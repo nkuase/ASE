@@ -153,6 +153,15 @@ site/
 public/
 
 ############################################
+# Generated PDF files (built from Markdown/Typst)
+# Do NOT commit generated PDFs - regenerate locally
+############################################
+
+# PDF output folders
+pdf/
+*.pdf
+
+############################################
 # Flutter / Dart (ASE456 Mobile Dev)
 ############################################
 
