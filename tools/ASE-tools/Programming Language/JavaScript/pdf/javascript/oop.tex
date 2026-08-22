@@ -1,0 +1,146 @@
+\begin{frame}[fragile]{ES6 Class Feature}
+
+\begin{itemize}
+	\item JavaScript ES6 is the version that actively adopts OOP ideas. 
+	\item In ES6, JavaScript introduces the `class' concept to support the OOP paradigm. 
+	\item However, behind the scene, it is syntactic sugar, meaning that it mimics OOP programming methodology, not that ES6 is an OOP language. 
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item This example shows how we can use `class' to incorporate the constructor function. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+// ES5 or before
+function Machine3(name){
+  this.name = name;
+  this.hello = function() {
+    return('Hello ' + this.name)
+  }
+}
+// ES6
+class Machine4 {
+  constructor(name) {
+    this.name = name
+    this.hello = function() {
+      return('Hello ' + this.name)
+    }
+  }
+}
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+When we need to add more prototype functions, we have two approaches.
+
+\begin{itemize}
+	\item The first approach is to use a prototype to add a new function (lines 1 - 4).
+	\item The second approach is to make the prototype function in the class (lines 14 - 16). 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+// Adding a function to prototype - method 1
+Machine4.prototype.hello2 = function() {
+  return('Hello2 ' + this.name)
+}
+
+// Adding a function to prototype - method 2
+class Machine5 {
+  constructor(name) {
+    this.name = name
+    this.hello = function() {
+      return('Hello ' + this.name)
+    }
+  }
+  hello2() { // added to prototype
+    return('Hello2 ' + this.name)
+  }
+}
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item We can make an object (line 1). 
+	\item In this example, person1 is an object from the class NewMachine5, so it has all the functions and variables in the constructor.
+	\item However, even though it does not have hello2() function, it can access and use it (line 3). 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+var person1 = new NewMachine5('Sam','GH565');
+console.log(person1); // Machine5 { name: 'Sam', hello: ...}
+console.log(person1.hello2()) // Hello2 Sam
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{Getter and Setter}
+
+\begin{itemize}
+	\item In CSC 260, we learned the OOP idea, encapsulation, to hide data from direct access. 
+	\item From this idea, we can make the function setAge() to access and modify the variable (data) in an object. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+var person = {
+  name: 'Sam',
+  age: 10,
+  setAge(age) {
+    this.age = parseInt(age); // if age is string type value
+  }
+}
+person.setAge(15)
+console.log(person)
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item With JavaScript, we can use the set/get modifier keyword to make the functions, setAge/nextAge, properties. 
+	\item Properties are functions that can be used as if they are variables. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+var person = {
+  name: 'Sam',
+  age: 10,
+  set setAge(age) { // set makes setAge function a setAge property
+    this.age = parseInt(age); // if age is string type value
+  },
+  get nextAge() {
+    return this.age + 1
+  }
+}
+person.setAge = 20 // setAge becomes a property
+console.log(person.nextAge)
+console.log(person)
+\end{lstlisting}%   
+\end{Code}%
+
+
+\end{frame}

@@ -1,0 +1,115 @@
+\begin{frame}[fragile]{Object (Buffer) and String}
+
+\begin{itemize}
+	\item The examples we have discussed use JavaScript buffers or JSON objects to store the encrypted information.
+	\item However, in a real-world situation, the encrypted information is stored and shared in a file. 
+	\item In this section, we discuss how to read information from a file or write information to a file. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item To store any JavaScript objects, including buffer objects, we need to transform them into a string. 
+	\item We get a buffer object in line 1. 
+	\item We can use toString to make them in a string. In line 2, we transform the object into a hexadecimal string. We need to use this when the information is a series of numbers.
+	\item In line 3, we can convert any information into a string.
+	\item We can convert them back to a buffer object as in line 4. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+const { x } = require('./module'); // x is an Object (Buffer)
+var y = x.toString('hex')
+var y = x.toString('utf-8')
+var z = Buffer.from(y) // z is an object
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{Storing the Buffer in a File}
+
+\begin{itemize}
+	\item This example shows how to store an object in a file (lines 2 -- 7) and load an object from a file (lines 9 -- 14). 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+const { x } = require('./module'); // x is an object
+try {
+    // store Object (Buffer) x as a string
+    fs.writeFileSync(filename, x.toString('hex'))
+} catch (err) {
+    console.log(err)
+}
+
+try {
+    // string x into Object (Buffer) x
+    var x = fs.readFileSync(filename);
+    return Buffer.from(x); // return data;
+} catch (err) {
+    console.log(err)
+}
+\end{lstlisting}%   
+\end{Code}%
+\end{frame}
+
+\begin{frame}[fragile]{Storing the JSON Object in a File}
+
+\begin{itemize}
+	\item If necessary, we may need to store JSON objects to a file and load them into JSON objects. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+try {
+    // JSON object -> JSON string
+    fs.writeFileSync(filename, JSON.stringify(users)) 
+} catch (err) {
+    console.log(err)
+}
+try {
+    var data = fs.readFileSync(filename);
+    // JSON string -> JSON object
+    return JSON.parse(data); 
+} catch (err) {
+    console.log(err)
+}
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{Warning!}
+
+\begin{itemize}
+	\item When we use JavaScript file I/O for manipulating objects, we use sync functions (readFileSync or writeFileSync), not async functions with call-back functions. 
+	\item It is to ensure that we get the information or store it before taking the next step. 
+    \item As a general rule, try to use sync functions when dealing with encryption or decryption, as data integrity is more important than data usability. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item When we write multiple information, for example strings "a", "b", and "c", we concatenate them with a boundary character such as ":".
+	\item For example, we store the information as "a:b:c", and we load the information and restore the information using the split() method. 
+	\item This code shows an example. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+var x = "x"; var y = "y"; var z = "z";
+var str = `${x}:${y}:${z}`; // encoding
+const [x2, y2, z2] = str.split(':'); // decoding
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}

@@ -1,0 +1,103 @@
+% [automatingbook](hook://file/OLBvzndSz?p=X1NjcmF0Y2hQYWQvSmF2YVNjcmlwdA==&n=automatingbook)
+
+\begin{frame}[fragile]{module.exports}
+
+\begin{itemize}
+	\item A module can have functions (lines 1 -- 3).
+	\item The function can be exported (line 4) using `modules.exports'. 
+\end{itemize}
+
+\begin{Code}{b.js}%
+\begin{lstlisting}[language=javascript, firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+const js = () => {
+  console.log('JavaScript');
+}
+module.exports = js;
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{require}
+
+\begin{itemize}
+	\item To use the module's functions, we use `require' (line 1). 
+	\item The reference name (b) is used to call the method (line 3). 
+\end{itemize}
+
+\begin{Code}{a.js}%
+\begin{lstlisting}[language=javascript, firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+const b = require('./b.js');
+console.log('From a.js: running code in the file b.js'); 
+b();
+\end{lstlisting}%   
+\end{Code}%
+
+\begin{Command}{node a.js}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+> node a.js
+From a.js: running code in the file b.js
+JavaScript
+\end{lstlisting}%   
+\end{Command}%
+\end{frame}
+
+\begin{frame}[fragile]{exports/require}
+
+\begin{itemize}
+	\item `exports' can be interpreted as a dynamic object; we can add functions to the object (lines 3 -- 4). 
+\end{itemize}
+
+\begin{Code}{d.js}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+const add = (x, y) => x + y
+const sub = (x, y) => x - y
+
+exports.add = add
+exports.sub = sub
+\end{lstlisting}%   
+\end{Code}%
+
+\begin{itemize}
+	\item To use the exported functions, we can use `require' to access the functions. 
+\end{itemize}
+
+\begin{Code}{c.js}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+const c = require('./d');
+console.log(c.add(10, 20))
+console.log(c.sub(10, 20))
+\end{lstlisting}%   
+\end{Code}%
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item When we use a block \{ ... \} with  `require,' we can use add/sub to reference the module's add/sub functions. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+const {add, sub} = require('./d');
+console.log(add(10, 20))
+console.log(sub(10, 20))
+\end{lstlisting}%   
+\end{Code}%
+
+\begin{Command}{node c.js}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+> node c.js
+30
+-10
+\end{lstlisting}%   
+\end{Command}%
+
+\end{frame}

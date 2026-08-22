@@ -1,0 +1,182 @@
+\begin{frame}[fragile]{JavaScript: Single Thread Model}
+% https://dev.to/bbarbour/if-javascript-is-single-threaded-how-is-it-asynchronous-56gd
+\begin{itemize}
+	\item JavaScript uses `Single Thread Model.'
+	\item However, in JavaScript, we can implement an asynchronous program that executes multiple functions at the same time.
+	\item In this example, setTimeout() function executes the lambda expression in 1000 ms, but line 5 is executed without waiting for its results. 
+\end{itemize}
+
+\begin{columns}%
+\begin{column}{0.4\textwidth}%
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+console.log("first")
+setTimeout(() => {
+    console.log("second")
+}, 1000)
+console.log("third")
+\end{lstlisting}%   
+\end{Code}%
+\end{column}%
+\begin{column}{0.4\textwidth}%
+\begin{Command}{Results}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+first
+third
+second
+\end{lstlisting}%   
+\end{Command}%%
+\end{column}%
+\end{columns}%
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item Understanding how JavaScript's single thread model can implement other programming languages' multi thread features is important. 
+	\item However, there are many misunderstandings on JavaScript thread model that leads to confusion. 
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{thread.jpg}
+\end{center} 
+\end{frame}
+
+\begin{frame}[fragile]{JavaScript Call Stack}
+% https://www.javascripttutorial.net/javascript-event-loop/
+\begin{itemize}
+	\item The secret behind JavaScript single-thread model is a call stack and event loop. 
+	\item The JavaScript engine executes a script from the top of the file and works its way down. 
+	\item It creates the execution contexts, pushes, and pops functions onto and off the call stack in the execution phase.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.4\textwidth]{eventloop1.png}
+\end{center} 
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item In this example, console.log() function is pushed in the call stack and popped out (\circled{2}). 
+	\item For time consuming function (task), it blocks other functions to be executed (\circled{4}), as console.log() function can be executed only after the task() function (\circled{6}). 
+\end{itemize}
+
+\begin{columns}%
+\begin{column}{0.5\textwidth}%
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+function task(message) {
+    // emulate time consuming task
+    let n = 10000000;
+    while (n > 0){
+        n--;
+    }
+    console.log(message);
+}
+
+console.log('Start script...');
+task('Call an API');
+console.log('Done!');
+\end{lstlisting}%   
+\end{Code}%
+\end{column}%
+\begin{column}{0.5\textwidth}%
+\begin{center}%
+\includegraphics[width=0.9\textwidth]{callstack.png} 
+\end{center}%
+\end{column}%
+\end{columns}%
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item To address this block issue, we can use callback queue.
+	\item In this example, when calling the setTimeout() function, the JavaScript engine places it on the call stack, and the Web API creates a timer that expires in 1 second in the Thread Pool.
+\end{itemize}
+
+\begin{columns}%
+\begin{column}{0.5\textwidth}%
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+console.log('Start script...');
+setTimeout(() => {
+    task('Download a file.');
+}, 1000);
+console.log('Done!');
+\end{lstlisting}%   
+\end{Code}%
+\end{column}%
+\begin{column}{0.5\textwidth}%
+\begin{center}%
+\includegraphics[width=0.9\textwidth]{javascript-event-loop-step-1.png}
+\end{center}%
+\end{column}%
+\end{columns}%
+\end{frame}
+
+\begin{frame}[fragile]{Callback Queue and Event Loop}
+
+\begin{itemize}
+\item Then the JavaScript engine places the task() function into a callback queue. 
+\item The event loop is a constantly running process that monitors both the callback queue and the call stack. 
+\item If the call stack is not empty, the event loop waits until it is empty and places the next function from the callback queue to the call stack. 
+\end{itemize} 
+
+\begin{columns}%
+\begin{column}{0.4\textwidth}%
+\begin{center}%
+\includegraphics[width=0.5\textwidth]{javascript-event-loop-step-2.png}
+\end{center}%
+\end{column}%
+\begin{column}{0.4\textwidth}%
+\begin{center}%
+\includegraphics[width=0.5\textwidth]{javascript-event-loop-step-3.png} 
+\end{center}%
+\end{column}%
+\end{columns}%
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+\item When setTimeout() function is expired immediately, the 2nd console.log() function is placed in the call stack.
+\item As a result, the task() in the setTimeout() function is executed the last. 
+\end{itemize}
+
+\begin{columns}%
+\begin{column}{0.7\textwidth}%
+\begin{center}%
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]%  
+
+console.log('Hi!');
+
+setTimeout(() => {
+    console.log('Execute immediately.');
+}, 0);
+
+console.log('Bye!');
+\end{lstlisting}%   
+\end{Code}%
+\end{center}%
+\end{column}%
+\begin{column}{0.3\textwidth}%
+\begin{Command}{Results}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+Hi!
+Bye!
+Execute immediately.
+\end{lstlisting}%   
+\end{Command}%
+\end{column}%
+\end{columns}%
+
+\end{frame}

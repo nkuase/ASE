@@ -1,0 +1,130 @@
+\RequirePackage{etoolbox}
+\documentclass[handout, 14pt]{beamer}
+%\expandafter\ifstrequal\expandafter{\jobname}{handout}{\documentclass[handout, 14pt]{beamer}\def\hando{I}}{\documentclass[14pt]{beamer}}
+
+
+%\useoutertheme{infolines}
+%\usecolortheme{crane}
+\usepackage{stackengine}
+\usepackage{scalerel}
+\usepackage{xcolor}
+\usepackage{comment} 
+%\useinnertheme[shadow=true]{rounded}
+\usepackage{etoolbox}
+
+\useinnertheme{circles}
+\usecolortheme{seahorse}
+\setbeamertemplate{footline}[page number]
+\setbeamerfont{section in toc}{size=\Large}
+\useoutertheme[subsection=false]{miniframes} 
+
+\input{macro}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkbordercolor = {white},
+    linkcolor=blue,
+    urlcolor=blue
+}
+\graphicspath{{topics/SE_programming/advjs/async/pic/}{topics/SE_programming/advjs/javascripthtread/pic/}}
+
+\begin{document}
+\title[SE Programming]{Software Engineering Programming\\Advanced JavaScript (Async/Await)}
+\author{Dr. Samuel Cho, Ph.D.} 
+\date{NKU ASE/CS} 
+
+{
+\begin{frame}[noframenumbering, plain]
+\titlepage
+\end{frame}
+}
+
+\begin{comment}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+Core ideas of this chapter
+\end{center}%
+\end{frame}
+\input{topics/SE_tools1/core}
+\end{comment}
+
+\begin{frame}[fragile]{}
+\begin{center} 
+    \usebeamerfont*{frametitle} 
+    \usebeamercolor[fg]{frametitle} 
+    \tableofcontents
+\end{center}
+\end{frame}
+
+
+\def\name{Thread Model}
+\section{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/advjs/async/thread}    
+
+
+\def\name{JavaScript Single Thread Model}
+\section[Single]{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/advjs/async/javascriptthread} 
+
+\def\name{The Danger of Single Thread Model}
+\section[Danger]{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/advjs/async/danger} 
+
+\def\name{The Async and Nonblocking Functions}
+\section[Nonblocking]{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/advjs/async/asyncfunctions}
+
+\def\name{Promises}
+\section{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/advjs/async/promises}
+
+\def\name{Async/Await}
+\section{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/advjs/async/async} 
+
+\end{document}

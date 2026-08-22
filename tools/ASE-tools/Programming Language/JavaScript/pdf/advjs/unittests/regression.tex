@@ -1,0 +1,116 @@
+\begin{frame}[fragile]{Example Project}
+
+In this example, programmer A and B are working on this regression javascript project. 
+
+\begin{columns}%
+\begin{column}{0.6\textwidth}%
+\begin{itemize}
+	\item A is responsible for arith.js module and test1 test files. 
+	\item B is responsible for hello.js module and test2 test files. 
+\end{itemize}
+\end{column}%
+\begin{column}{0.4\textwidth}%
+\begin{center}%
+\includegraphics[width=0.9\textwidth]{regression.png} 
+\end{center}%
+\end{column}%
+\end{columns}%
+
+\end{frame}
+
+\begin{frame}[fragile]{arith Module and Test}
+
+\begin{itemize}
+	\item A runs `jest -i test1/*.js' command to run all of A's tests. 
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{t1.png}
+\end{center} 
+
+\begin{columns}%
+\begin{column}{0.5\textwidth}%
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+function add(x, y) {return x + y;}
+function sub(x, y) {return x - y;}
+
+module.exports = {add, sub}
+\end{lstlisting}%   
+\end{Code}%
+\end{column}%
+\begin{column}{0.5\textwidth}%
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+const {add, sub} = require('../src/arith.js');
+
+test('adds 1 + 2 to equal 3', 
+  () => {
+    expect(add(1, 2)).toBe(3);
+});
+test('adds 1 + 2 to equal 3', 
+  () => {
+    expect(sub(1, 2)).toBe(-1);
+});  
+\end{lstlisting}%   
+\end{Code}%
+\end{column}%
+\end{columns}%
+
+\end{frame}
+
+\begin{frame}[fragile]{hello Module and Test}
+
+\begin{itemize}
+	\item B runs `jest -i test2/*.js' command to run all of B's tests. 
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{t2.png}
+\end{center} 
+
+\begin{columns}%
+\begin{column}{0.5\textwidth}%
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+function hello() {
+    return "Hello";
+}
+
+module.exports = {hello}
+\end{lstlisting}%   
+\end{Code}%
+\end{column}%
+\begin{column}{0.5\textwidth}%
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+const {hello} = require('../src/hello.js');
+
+test('print out hello', () => {
+    expect(hello()).toBe('Hello');
+});
+\end{lstlisting}%   
+\end{Code}%
+\end{column}%
+\end{columns}%
+
+\end{frame}
+
+\begin{frame}[fragile]{Regression Test}
+
+\begin{itemize}
+	\item When A or B makes a change, they need to run all the tests to ensure the change does not break any existing code. 
+	\item In this case, A or B executes the command `jest' to run all the tests in the project.
+	\item Or, they can run `npm test' to run the same command. 
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{t3.png}
+\end{center} 
+
+
+\end{frame}

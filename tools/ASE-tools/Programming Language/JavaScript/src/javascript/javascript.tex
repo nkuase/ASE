@@ -1,0 +1,76 @@
+
+
+
+\begin{frame}[fragile]{Let, Var, and Const}
+
+\begin{itemize}
+	\item JavaScript has two ways to make a variable: let and var. 
+	\item The difference between the two is that the variables defined with `let' cannot be redefined, whereas `var' variables are OK with the redefine. 
+    \item The variables defined with `const' cannot be modified. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item The code shows an example. Line 6 is an error as we try to redefine the variable a that is defined with `let.' 
+	\item It is OK to update the value defined with let as in line 7, or redefine the variable defined with var as in line 8. 
+	\item It is not OK to change constant value as in line 9. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+if (true) { // to make local variables
+  let a = 1; 
+  var b = 2;
+  const c = 3;
+  if (true) { // to make local variables
+    var a = 4; // Error
+    a = 3; // OK 
+    let b = 3;  // OK
+    c = 4; //Error 
+  }
+  console.log(a); 
+  console.log(b);
+}
+\end{lstlisting}%   
+\end{Code}
+
+\end{frame}
+
+\begin{frame}[fragile]{JavaScript String}
+
+\begin{itemize}
+	\item Java has a char type (primitive value) and a String (reference type object), and we use '.' to represent a char, and ''...'' for a Java String. 
+	\item JavaScript has only strings, and we use one notation \verb|'...'|.
+	\item We can concatenate strings and variables using the '+' operator as in line 2. 
+	\item We also can interpolate strings (use variables in a string) with \verb|`...`| and \$\{...\} as in line 3.
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+var cruel = 'cruel';
+var line = 'hello ' + cruel + ' world';
+var line2 = `hello ${cruel} world`;
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item When the interpolate string is used as an argument to a function, the function can analyze the input to extract values. 
+	\item We call this feature `tagged list.'
+	\item In this example, the analyzer() function parse the string input to extract var1 and var2. 
+	\item Notice that this code is output from Quokka extension, so it displays parsed input results in lines 87 - 89. 
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{topics/SE_programming/javascript/pic/history/string2.png}
+\end{center} 
+
+\end{frame}

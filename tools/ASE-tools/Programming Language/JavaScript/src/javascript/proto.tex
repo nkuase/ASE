@@ -1,0 +1,219 @@
+\begin{frame}[fragile]{Old Way to Make Objects}
+
+\begin{itemize}
+	\item JavaScript is a prototype-based language, not an OOP language.
+	\item This means that when we have a prototype object, we can copy it to make another object. 
+	\item To do this, we need \textbf{a function that contains members (elements with the this)} (lines 1 - 3). 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+function Machine(){
+  this.name = 'Sam'; // Don't forget this
+}
+\end{lstlisting}%   
+\end{Code}%
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item It is important to notice that the prototype function's variables must have the `this.' keyword prepended. 
+	\item Also, we need to follow the convention that the prototype function name starts with a capital letter. 
+	\item Then, we can use the new operator to make an object from a prototype function.
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+function Machine(){ // prototype function
+  this.name = 'Sam'; // Don't forget 'this'
+}
+
+var person1 = new Machine(); // {name: 'Sam'}
+var person2 = new Machine(); // {name: 'Sam'}
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item We can add new functions in the prototype function. 
+	\item We can call the functions in the objects (lines 9 - 10).
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+function Machine2(){
+  this.name = 'Sam';
+  this.hello = function() {
+    console.log('Hello ' + this.name)
+  }
+}
+var person1 = new Machine2(); 
+var person2 = new Machine2(); 
+person1.hello() // 'Hello Sam'
+person2.hello() // 'Hello Sam'
+\end{lstlisting}%   
+\end{Code}%
+\end{frame}
+
+\begin{frame}[fragile]{Constructor}
+
+\begin{itemize}
+	\item When we want to change the variable name, we can give \textbf{an argument} to the prototype function (lines 7 -- 8). 
+	\item We call this function constructor because it does the same thing as Java Constructor (CSC 260). 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+function Machine3(name){ // constructor with an argument
+  this.name = name;
+  this.hello = function() {
+    console.log('Hello ' + this.name)
+  }
+}
+var person1 = new Machine3('Sam');
+var person2 = new Machine3('John);
+person1.hello() // 'Hello Sam'
+person2.hello() // 'Hello John'
+\end{lstlisting}%   
+\end{Code}%
+\end{frame}
+
+\begin{frame}[fragile]{Inheritance Using Prototype}
+
+\begin{itemize}
+	\item Any (prototype) objects have the `prototype' property. 
+	\item When we need to extend prototype functions, we can add new features to the prototype using the `prototype' property. 
+	\item As an example, this code shows how we can add the `id' variable to the Machine3 function using the prototype property. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+Machine3.prototype.id = 'chos5'; // extends the machine3 
+\end{lstlisting}%   
+\end{Code}%
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item We have a constructor function (line 1) that uses a prototype to add the id variable (line 2).  
+	\item  We make an object using a constructor function, and we see that the `id' is not a part of the object (lines 3 -- 4).
+	\item When JavaScript accesses person1.id, it searches the id in a current (person1) object, as it cannot find the person1.id,  it searches the parent's prototype variables to find the id variable in the prototype property. (line 4).
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+function Machine3(name) { ... }
+Machine3.prototype.id = 'chos5';
+var person1 = new Machine3('Sam');
+console.log(person1) // Machine3 { name: 'Sam', hello: ... }
+console.log(person1.id) // chos5
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{Example of Prototype - toString()}
+
+\begin{itemize}
+	\item We can use [...] notation to make an array object.
+	\item However, it is the simplified syntax of `new Array(...).'
+	\item We can use the toString() function as it is a member of the Array constructor function. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+var arr = [1,2,3]; // simplified syntax (constructor is hidden)
+var arr = new Array(1,2,3);
+console.log(arr.toString()); // We can use toString()
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item We can use the `Array.prototype' to check the available functions; also, we can use `arr.\_\_proto\_\_' to get the same information. 
+	\item We may need to use Chrome's Developer feature to get the full list, as Node.js may show no information such as Object(0) or []. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+console.log(Array.prototype); // to get parent's prototype (Object(0))
+console.log(arr.__proto__); // Object(0)
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{Dynamic Object Extension}
+
+\begin{itemize}
+	\item In this example, we make the p object (line 1) to be the prototype of an empty object (line 3). 
+	\item In this case, even though the object `c' looks empty with nothing in it (line 4), c can access all the object elements of p (line 5). 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+var p = {name: 'Sam'};
+var c = {}
+c.__proto__ = p
+console.log(c) // {}
+console.log(c.name) // 'Sam'
+\end{lstlisting}%   
+\end{Code}%
+\end{frame}
+
+\begin{frame}[fragile]{ES5 Features}
+
+\begin{itemize}
+	\item JavaScript ES5 is the first major revision of JavaScript. 
+	\item JavaScript ES5 adds a new function Object.create(). 
+	\item We can use Object.create() to make an object, and the copied object's prototype has the p (line 2). 
+	\item So, when we print c, we get an empty object, but we can access the p.id variable through the prototype.
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+var p = {name: 'Sam', id:'chos5'}
+var c = Object.create(p)
+console.log(c) // {}
+console.log(c.id) // c can access id
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item Let's add a new variable id in the c object (line 1). 
+	\item In this case, the id is a member of the object c (line 2).
+	\item The id in its prototype is overridden, as the c.id will be accessed, not the p.id, when we access the variable id. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+c.id = 'chos6' // we create a new id
+console.log(c) // {id: 'chos6'} prototype id is hidden
+console.log(c.id) // chos6 is printed
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}

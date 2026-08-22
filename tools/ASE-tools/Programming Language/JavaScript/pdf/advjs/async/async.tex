@@ -1,0 +1,163 @@
+\begin{frame}[fragile]{Async}
+
+\begin{itemize}
+	\item Async function means the function returns a promise object. 
+	\item We can use the then() function to process the value from the promise object. 
+\end{itemize}
+
+\begin{columns}%
+\begin{column}{0.7\textwidth}%
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+async function  getSumNum(a, b) {
+  const customPromise = new Promise(
+    (resolve, reject) => {...}
+  )}
+  return customPromise
+}
+
+console.log('before')
+getSumNum(1, 2).then(data => {console.log(data)})
+console.log('after')
+\end{lstlisting}%   
+\end{Code}%
+\end{column}%
+\begin{column}{0.25\textwidth}%
+\begin{Command}{Results}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+before
+after
+3
+\end{lstlisting}%   
+\end{Command}%
+\end{column}%
+\end{columns}%
+\end{frame}
+
+\begin{frame}[fragile]{Await}
+
+\begin{itemize}
+	\item We can use the `await' keyword to remove the usage of the `then' method and a lambda expression.  
+	\item In this example, we can use `await' to make all the commands after line 3 wait for the return from the promise object. 
+	\item The output shows that lines 4 -- 5 are executed only after the value is returned from the await function (line 3). 
+\end{itemize}
+
+\begin{columns}%
+\begin{column}{0.7\textwidth}%
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+async function f() {
+  console.log('before')
+  let result = await getSumNum(1, 2)
+  console.log(result)
+  console.log('after')
+}
+f()
+\end{lstlisting}%   
+\end{Code}%
+\end{column}%
+\begin{column}{0.25\textwidth}%
+\begin{Command}{Results}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+before
+3
+after
+\end{lstlisting}%   
+\end{Command}%
+\end{column}%
+\end{columns}%
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item The commands in the async function should wait for the return from the promise object.
+	\item However, the commands outside the async function can be executed asynchronously. 
+	\item In this code, line 10 is executed without waiting for the f() to return.  
+\end{itemize}
+
+\begin{columns}%
+\begin{column}{0.7\textwidth}%
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+async function f() {
+  console.log('before await')
+  let result = await getSumNum(1, 2)
+  console.log(result)
+  console.log('after await')
+}
+
+console.log('before f')
+f()
+console.log('after f')
+\end{lstlisting}%   
+\end{Code}%
+\end{column}%
+\begin{column}{0.25\textwidth}%
+\begin{Command}{Results}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+before f
+before await
+after f
+3
+after await
+\end{lstlisting}%   
+\end{Command}%
+\end{column}%
+\end{columns}%
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item To process the reject() invocation from the promise object, we should use the try/catch/finally structure. 
+\end{itemize}
+
+\begin{columns}%
+\begin{column}{0.7\textwidth}%
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+async function f() {
+  console.log('before await')
+  try {
+    let result = await getSumNum(11, 2)
+    console.log(result)
+  }
+  catch (e) {
+      console.error(e)
+  }
+  finally {
+      console.log("Everything is done")
+  }
+  console.log('after await')
+}
+
+console.log('before f')
+f()
+console.log('after f')
+\end{lstlisting}%   
+\end{Code}%
+\end{column}%
+\begin{column}{0.25\textwidth}%
+\begin{Command}{Results}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+before f
+before await
+after f
+Error: Oops!.. Number must be less than 5
+  ...
+Everything is done
+after await
+\end{lstlisting}%   
+\end{Command}%
+\end{column}%
+\end{columns}%
+\end{frame}

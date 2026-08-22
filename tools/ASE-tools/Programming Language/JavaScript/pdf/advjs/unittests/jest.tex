@@ -1,0 +1,56 @@
+% https://jestjs.io/docs/getting-started
+
+\begin{frame}[fragile]{Jest}
+
+\begin{itemize}
+	\item \href{https://jestjs.io}{Jest (https://jestjs.io)} is a JavaScript Framework.
+	\item We can automize JavaScript project testing using Jest. 
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.3\textwidth]{jest.jpeg}
+\end{center} 
+
+
+\end{frame}
+
+\begin{frame}[fragile]{Installation with Node.js}
+
+\begin{itemize}
+	\item We execute the command `npm install jest'.
+	\item Then the package.json has the Jest library as a dependency. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+"dependencies": {
+  "jest": "^27.5.1"
+},
+\end{lstlisting}%   
+\end{Code}%
+
+\begin{itemize}
+	\item When we need to install Jest as a command line tool, we can use `npm install -g jest'.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Jest Example}
+
+\begin{itemize}
+	\item We can execute the jest command (line 1) that jest finds all the tests and run them. 
+	\item We can specify the test to run (line 2).
+	\item We can use a pattern to execute tests. We can execute all the js files in the hello directory (line 3). 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+jest 
+jest -i hello.tests.js
+jest -i hello/*.js
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}

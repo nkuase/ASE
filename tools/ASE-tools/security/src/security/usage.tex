@@ -1,0 +1,244 @@
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item As we learned the basics of information security, we can understand the applications that use the security tools.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Password}
+
+\begin{columns}%
+\begin{column}{0.7\textwidth}%
+\begin{itemize}
+	\item Servers do not store password in its original form.
+	\item Instead, they create a hash and salt values from the password, and store them. 
+	\item Therefore, even when the password files are hacked, hackers need to decrypt the original passwords from the hash values. 
+\end{itemize}
+\end{column}%
+\begin{column}{0.3\textwidth}%
+\begin{center}
+\includegraphics[width=0.99\textwidth]{topics/SE_tools2/security/pic/crypto/hacked_password.png}
+\end{center} 
+\end{column}%
+\end{columns}%
+\end{frame}
+
+\begin{frame}[fragile]{SSL}
+\begin{itemize}
+    \item SSL uses the hybrid 
+	\item SSL certificates create a foundation of trust by establishing a secure connection.
+	\item SSL aims to share a session key (symmetric/shared) securely between a browser and a web server. SSL uses a public key to share the session key.
+	\item The shared session key is used for all communications between the browser and the server. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{How SSL Works?}
+
+\begin{enumerate}
+  \item Browser connects to a web server (website) secured with SSL (HTTPS). Browser requests that the server identify itself.
+  \item Server sends a copy of its SSL Certificate, including the server's public key and a message.
+\end{enumerate}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{topics/SE_tools2/security/pic/ssl/ssl.png}
+\end{center} 
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+  \item Browser checks the certificate root against a list of trusted CAs and that the certificate is unexpired, unrevoked, and that its common name is valid for the website that it is connecting to. 
+  \item If the browser trusts the certificate, it creates, encrypts, and sends back a symmetric session key using the server's public key. Notice that the browser (client) and server uses hybrid encryption now. 
+\end{enumerate}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{topics/SE_tools2/security/pic/ssl/ssl.png}
+\end{center} 
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{enumerate}
+\setcounter{enumi}{4}
+  \item Server decrypts the symmetric session key using its private key and sends back an acknowledgment encrypted with the session key to start the encrypted session.
+  \item Server and Browser now encrypt all transmitted data with the session key.
+\end{enumerate}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{topics/SE_tools2/security/pic/ssl/ssl.png}
+\end{center} 
+\end{frame}
+
+\begin{frame}[fragile]{TLS}
+
+\begin{itemize}
+	\item Transport Layer Security (TLS) is the successor protocol to SSL. TLS is an improved version of SSL. 
+	\item It works in much the same way as the SSL, using encryption to protect the transfer of data and information. 
+	\item The two terms are often used interchangeably in the industry, although SSL is still widely used.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{HTTPS}
+
+\begin{itemize}
+	\item Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol (HTTP). 
+	\item It is used for secure communication over a computer network and is widely used on the Internet.
+	\item In HTTPS, the communication protocol is encrypted using Transport Layer Security (TLS) or, formerly, Secure Sockets Layer (SSL). 
+	\item The protocol is therefore also referred to as HTTP over TLS or HTTP over SSL.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{SSH}
+\begin{itemize}
+	\item The Secure Shell Protocol (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network.
+	\item SSH operates on TCP port 22 by default (though this can be changed if needed). 
+	\item The host (server) listens on port 22 (or any other SSH assigned port) for incoming connections. 
+	\item It organizes the secure connection by authenticating the client and opening the correct shell environment if the verification is successful.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{How Does SSH Work?}
+
+\begin{itemize}
+	\item When a client tries to connect to the server via TCP, the server presents the encryption protocols and respective versions that it supports. 
+	\item If the client has a similar matching pair of a protocol and version, an agreement is reached, and the connection is started with the accepted protocol.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item The server also uses an asymmetric public key which the client can use to verify the authenticity of the host.
+	\item This is why the SSH client stores the public keys in \verb|~/.ssh/| for the verification.
+	\item Once this is established, the two parties use what is known as a Diffie-Hellman Key Exchange Algorithm to create a symmetrical key.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{SSH Authentication Using Password}
+
+\begin{itemize}
+	\item For authenticating users, most SSH users use a password.
+	\item The user is asked to enter the username, followed by the password. 
+	\item These credentials securely pass through the symmetrically encrypted tunnel, so there is no chance of them being captured by a third party.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Better Authentication Using Public Key}
+
+\begin{itemize}
+	\item We can generate and use SSH keys to enable simple and secure user authentication.
+	\item We use `ssh-keygen -t rsa' to generate a pair of keys on the local machine. 
+	\item The generated public key should be copied to the server using `ssh-copy-id user@serverip.'
+	\item Then, we can log in to the remote server using ssh without giving the password. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{PGP}
+\begin{itemize}
+	\item Pretty Good Privacy (PGP) is an encryption program that provides cryptographic privacy and authentication for data communication.
+	\item We have used JavaScript packages for information security.
+	\item We also can use PGP tools for protecting digital information.
+	\item We can use PGP as a library to be used for other programming languages - \href{https://www.openpgp.org/software/developer/}{https://www.openpgp.org/software/developer/}. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{GPG Installation}
+
+\begin{itemize}
+	\item GPG (GNU PGP) is the Open source implementation of PGP. 
+	\item We can install PGP CLI programs using `brew' or `choco.'
+	\item Use the name `gnupg' for its installation. When installed, the `gpg' is the command.
+\end{itemize}
+
+\begin{Command}{GPG}
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+brew install gnupg # Mac
+choco install gnupg # PC
+gnupg ... # need more arguments
+\end{lstlisting}%   
+\end{Command}
+
+\end{frame}
+
+\begin{frame}[fragile]{Create a public/private key pair}
+
+\begin{itemize}
+	\item `gpg --gen-key` is the command to make the key pair.
+	\item Give your information with a paraphrase. I assume Sam (smcho) makes the key. 
+	\item Then, a gpg directory is created to store the keys. 
+\end{itemize}
+
+\begin{Command}{}
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+gpg: /Users/smcho/.gnupg/trustdb.gpg: trustdb created
+gpg: directory '/Users/smcho/.gnupg/openpgp-revocs.d' created
+gpg: revocation certificate stored as '/Users/smcho/.gnupg/openpgp-revocs.d/F57AC82C7287D917A00C52AD951B59471C7CF6FE.rev'
+public and secret key created and signed.
+
+pub   ed25519 2022-03-15 [SC] [expires: 2024-03-14]
+      F57AC82C7287D917A00C52AD951B59471C7CF6FE
+uid                      smcho <chos5@nku.edu>
+sub   cv25519 2022-03-15 [E] [expires: 2024-03-14]
+\end{lstlisting}%   
+\end{Command}
+\end{frame}
+
+\begin{frame}[fragile]{Make a Public Key}
+
+\begin{itemize}
+    \item Use \href{http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/}{http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/} as a reference. 
+	\item Run `gpg --export -a "smcho" > public.key' to make a public key to share. 
+	\item Students should use the correct user name when they used `pgp --gen-key' not "smcho". 
+	\item Sam (smcho) can share the public.key to anyone. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Importing a Shared Public Key}
+
+\begin{itemize}
+    \item Let's say Jim wants to send Sam (smcho) an encrypted file. 
+    \item Jim receives Sam's public key (public.key). 
+    \item Jim runs `gpg --import public.key' to import Sam's public key. 
+    \item Jim can use `gpg --list-keys' to check the imported public keys. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Encrypting a File}
+
+\begin{itemize}
+	\item Jim has a file (myfile.txt) with a secret text ("This is a secret message.") in it. 
+	\item Run `gpg --recipient smcho --encrypt myfile.txt' to encrypt the file.
+	\item Send the generated `myfile.txt.gpg' to Sam (smcho).
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Decrypting a File}
+
+\begin{itemize}
+	\item Sam (smcho) can use `gpg -d myfile.txt.gpg' to recover the original file. 
+	\item `gpg' requires to enter the `paraphrase' that Sam entered when he made a key pairs. 
+\end{itemize}
+
+\begin{Command}{}
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+smcho@mbp OneDrive-NorthernKentuckyUniversity> gpg -d myfile.txt.gpg
+gpg: encrypted with cv25519 key, ID 46C764EADFBE878F, created 2022-03-15
+      "smcho <chos5@nku.edu>"
+This is a secret message.
+\end{lstlisting}%   
+\end{Command}
+
+\end{frame}

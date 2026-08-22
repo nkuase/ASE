@@ -1,0 +1,207 @@
+\begin{frame}[fragile]{Q \& A}
+
+\begin{itemize}
+	\item Q: I am not sure if my file is modified or not. How can I check that? 
+	\item A: We need a hash, salt, or HMAC to find if some files are modified or not effectively.
+	\item Q: Is that the same hash we used in git?
+	\item A: Yes, it is. That's how git identifies if something is changed or not. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Hash}
+
+\begin{itemize}
+	\item Hash means `chop and mix,' and that describes what a hashing function does. 
+	\item Hashing algorithms, like SHA (Secure Hashing Algorithm), produce a random, unique, fixed-length string from a given input. 
+	\item They are often used to compare two values, like passwords, for equality because the same input will always produce the same output.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{topics/SE_tools2/security/pic/crypto/hash.png}
+\end{center} 
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item We can extract fingerprint using the hash and share it. 
+	\item The shared hash will be compared to detect a possible tampering.  
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{topics/SE_tools2/security/pic/hash/hash.png}
+\end{center} 
+
+\end{frame}
+
+\begin{frame}[fragile]{Code Using Hash}
+
+\begin{itemize}
+	\item There are many algorithms available for hashing functions, but we use SHA256 in this example.
+	\item We should not use MD5 as it is not safe anymore.
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+const {creatHash, createHash} = require('crypto')
+function hash(input) {
+    return createHash('sha256').update(input).digest('hex');
+}
+
+let password = 'hello';
+const hash1 = hash(password); console.log(hash1)
+const hash2 = hash(password); console.log(hash2)
+const hash3 = hash(password + "2"); console.log(hash3)
+
+console.log(hash1 == hash2) // true
+console.log(hash2 == hash3) // false
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{Salt}
+
+\begin{itemize}
+	\item Hashes are great for making passwords unreadable, but because they always produce the same output, they are not very secure. 
+	\item A salt is a random string that is added to the input before hashing. 
+	\item This makes the salt more unique and harder to guess.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{topics/SE_tools2/security/pic/crypto/salt.png}
+\end{center} 
+
+\end{frame}
+
+\begin{frame}[fragile]{Code Using Salt}
+
+\begin{itemize}
+	\item This is the function signup() to return a password with both salt and hashed password. 
+	\item The function scryptSync() is the method that uses password and salt to return an object, so we should use toString('hex') to make a readable string (line 4). 
+	\item We store the password that has the format of `salt:password' (line 5). 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+const users = [];
+function signup(email, password) {
+  const salt = randomBytes(16).toString('hex');     
+  const hashedPassword = scryptSync(password, salt, 64).toString('hex');
+  const user = { email: `${email}`, password: `${salt}:${hashedPassword}` } 
+  users.push(user);
+  return user
+}
+\end{lstlisting}%   
+\end{Code}%
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item This is a login function with an email address and password. 
+	\item This function returns true or false depending on the authentication results. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+// const users = [];
+function login(email, password) {
+    const user = users.find(v => v.email === email);
+    const [salt, pw] = user.password.split(':');
+    // Make the hashedBuffer (not a hex string) because we need a buffer to use timingSafeEqual
+    const created_pw = scryptSync(password, salt, 64).toString('hex')// use the salt to make hash from the given password
+    return created_pw === pw; 
+}
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{HMAC}
+
+\begin{itemize}
+	\item HMAC (Hash-based Message Authentication Code) is a keyed hash of data - like a hash with a password. 
+	\item HMAC is also called as MAC. 
+	\item Using a different key produces a different output.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{topics/SE_tools2/security/pic/crypto/hmac.png}
+\end{center} 
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item  Both Hash and Salt focuses only on integrity.
+	\item  To create an HMAC, you need to have the key, therefore allowing you to verify both the authenticity and integrity (originator of the data). 
+	\item In other words, we can use HMAC to check if the message is compromised or not, as those who have the password can make the same HMAC from the message. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item To use HMAC, a key should be shared in advance. 
+	\item HMAC gives one more layer of security to prevent the possible tampering of both message and hash. 
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{topics/SE_tools2/security/pic/hmac/hmac.png}
+\end{center} 
+
+\end{frame}
+
+\begin{frame}[fragile]{Code Using HMAC}
+
+\begin{itemize}
+	\item In this example, we send a message with HMAC. A sender and a receiver share the password.
+	\item Let's say we send a message and HMAC.  
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+const { createHmac } = require('crypto');
+
+const password = 'hello!';
+const message = 'hello world'
+
+// We need to generate the same hash only when we know the password
+// Server can be sure the hmac hash is correct only when the sender has the correct password 
+const hmac = createHmac('sha256', password).update(message).digest('hex');
+// We can send message and password
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item The receiver already has a shared key, so the receiver can generate the HMAC from the key and a message. 
+	\item The receiver can compare the received HMAC and generated HMAC to check if the message is compromised or not (integrity check). 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+// message and hmac are received
+const hmac_created = createHmac('sha256', password).update(message).digest('hex');
+
+if (hmac_created === hmac) {
+    console.log(`${message} is not compromised.`)
+}
+else {
+    console.log(`${message} is compromised.`)
+}
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}

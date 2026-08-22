@@ -1,0 +1,84 @@
+\begin{frame}[fragile]{Let, Var, and Const}
+
+\begin{itemize}
+	\item JavaScript has two ways to make a variable: let and var. 
+	\item The difference between them is that (a) the variables defined with `let' cannot be redefined, but (b) `var' variables are OK with the redefine. 
+    \item The variables defined with `const' cannot be modified. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item The code shows an example. Line 6 is an error as we try to redefine the variable a that is defined with `let.' 
+	\item It is OK to update the value defined with let as in line 7 or redefine the variable defined with var as in line 8. 
+	\item It is not OK to change the constant value as in line 9. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+if (true) { // to make local variables
+  let a = 1; 
+  var b = 2;
+  const c = 3;
+  if (true) { // to make local variables
+    var a = 4; // Error as a is let defined
+    a = 3; // OK 
+    let b = 3;  // OK as b is var defined
+    c = 4; //Error 
+  }
+  console.log(a); 
+  console.log(b);
+}
+\end{lstlisting}%   
+\end{Code}
+\end{frame}
+
+\begin{frame}[fragile]{Why let and var?}
+
+\begin{itemize}
+	\item JavaScript was a simple language with only one modifier, `var.'
+	\item However, var has many issues, including redefinition; especially, var is function scoped, not block scoped, to cause many problems, as the line 7. 
+	\item So, JavaScript introduced `let' to introduce the block scope (CSC 260). 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+function run() {
+  {
+    var moo = "Mooo"
+    let baz = "Bazz";
+    console.log(moo, baz); // Mooo Bazz
+  }
+  console.log(moo); // Mooo <- It's not OK to access moo in the other block
+  console.log(baz); // ReferenceError
+}
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{Just Use Let}
+
+\begin{itemize}
+	\item So, to avoid this confusion, it is recommended to use let variables, which are block scoped.
+	\item Don't use var variables unless you know what you are doing. 
+	\item When we define a variable using let, we can't redefine in the same block, but we can do it in a different block; it's similar to Java 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+var x = 10
+var x = 20 // You should have a reason to do this
+let z = 20
+//let z = 40 // Error!
+{let z = 40} // This is OK
+z = 30
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}

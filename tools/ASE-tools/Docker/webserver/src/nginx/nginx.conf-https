@@ -1,0 +1,41 @@
+# nginx configuration for nginx:1.24 (classic syntax)
+server {
+    listen 80;
+    server_name prosseek.com www.prosseek.com;
+    
+    # Let's Encrypt ACME challenge
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+    
+    # HTTPS Redirect
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    # Classic HTTP/2 syntax that works reliably with nginx 1.24
+    listen 443 ssl http2;
+    server_name prosseek.com www.prosseek.com;
+    
+    # SSL Certificate paths
+    ssl_certificate /etc/letsencrypt/live/prosseek.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/prosseek.com/privkey.pem;
+    
+    # SSL settings
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+    
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    
+    # Document root
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+    
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}

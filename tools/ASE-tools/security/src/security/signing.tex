@@ -1,0 +1,77 @@
+\begin{frame}[fragile]{Repudiation}
+
+\begin{itemize}
+	\item Repudiation is the ability to deny being the sender of a message. 
+	\item For example, a message and HMAC value are sent from A to B, and afterward A claims, "I didn't send this message to B. B made this up." 
+    \item We need Digital Signature (or Signing) to solve this problem. 
+    \item Notice that HMAC uses the shared key to enable possible repudiation. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item Signing is the process of creating a digital signature of a message. 
+	\item A signature is a hash of the original message, which is then encrypted with the sender's private key (not the shared key as in HMAC).
+	\item The signature can be verified by the recipient using the public key of the sender. 
+	\item This can guarantee the original message is authentic and unmodified.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.4\textwidth]{topics/SE_tools2/security/pic/sign/sign.png}
+\end{center} 
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item Remember that the digital signature is nothing more than an encrypted hash with a sender's private key. 
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{topics/SE_tools2/security/pic/sign/idea2.png}
+\end{center} 
+
+\end{frame}
+
+\begin{frame}[fragile]{Creating a Signature}
+
+\begin{itemize}
+	\item We need to check the integrity of the data.
+	\item So, we create a signature from a private key (line 8) and a sign that contains the original data (line 7).  
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+const { createSign, createVerify } = require('crypto');
+const { publicKey, privateKey } = require('./keypair');
+
+const data = 'I need to sign this document.';
+/// SIGN
+const signer = createSign('rsa-sha256');
+signer.update(data);
+const siguature = signer.sign(privateKey, 'hex');
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{Verifying the Signature}
+
+\begin{itemize}
+	\item When we receive the data and signature, we can create a verifier (line 1) with data (line2) to verify the results (line 3). 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+verifier = createVerify('rsa-sha256');
+verifier.update(data);
+const isVerified2 = verifier.verify(publicKey, siguature, 'hex');
+console.log(isVerified2);
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}

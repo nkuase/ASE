@@ -154,12 +154,8 @@ public/
 
 ############################################
 # Generated PDF files (built from Markdown/Typst)
-# Do NOT commit generated PDFs - regenerate locally
+# Published PDFs are copied here by compile_to_temp_repo.
 ############################################
-
-# PDF output folders
-pdf/
-*.pdf
 
 ############################################
 # Flutter / Dart (ASE456 Mobile Dev)

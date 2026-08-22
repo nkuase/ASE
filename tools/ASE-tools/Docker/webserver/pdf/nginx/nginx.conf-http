@@ -1,0 +1,17 @@
+server {
+    listen 80;
+    server_name prosseek.com www.prosseek.com;
+    
+    # Let's Encrypt ACME challenge
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+    
+    # 
+    location / {
+        root /usr/share/nginx/html;
+        index index.html index.htm;
+    }
+}
+# This is only for getting certificates
+# Use the other one in the real situation.

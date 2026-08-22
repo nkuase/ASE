@@ -1,0 +1,128 @@
+\RequirePackage{etoolbox}
+\documentclass[handout, 14pt]{beamer}
+%\expandafter\ifstrequal\expandafter{\jobname}{handout}{\documentclass[handout, 14pt]{beamer}\def\hando{I}}{\documentclass[14pt]{beamer}}
+
+\useinnertheme{circles}
+\useoutertheme{infolines}
+\usecolortheme{crane}
+\usepackage{stackengine}
+\usepackage{scalerel}
+\usepackage{xcolor}
+\usepackage{comment} 
+%\useinnertheme[shadow=true]{rounded}
+\usepackage{etoolbox}
+
+\input{macro}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkbordercolor = {white},
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\begin{document}
+\title[SE Programming]{Software Engineering Programming\\Node.js}
+\author{Dr. Samuel Cho, Ph.D.} 
+\date{NKU ASE/CS} 
+
+\frame{\titlepage} 
+
+\begin{comment}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+Core ideas of this chapter
+\end{center}%
+\end{frame}
+\input{topics/SE_tools1/core}
+\end{comment}
+
+\begin{frame}[fragile]{}
+\begin{center} 
+    \usebeamerfont*{frametitle} 
+    \usebeamercolor[fg]{frametitle} 
+    \tableofcontents
+\end{center}
+\end{frame}
+
+\def\name{V8}
+\section{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/nodejs/v8} 
+
+\def\name{Node.js}
+\section{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/nodejs/nodejs}
+
+\def\name{Node.js}
+\section{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/nodejs/npm} 
+
+\begin{comment}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+Tools
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/nodejs/tools}  
+\end{comment}
+
+\def\name{Example Application Development Using Node.js}
+\section{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/nodejs/example}    
+
+\def\name{Node.js for Server Side programming}
+\section{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/nodejs/nodejs1}  
+ 
+\def\name{Chromium/Electron for Web application}
+\section{\name}
+\begin{frame}[fragile]{}%
+\begin{center}%
+\usebeamerfont*{frametitle}%
+\usebeamercolor[fg]{frametitle}%
+\name
+\end{center}%
+\end{frame}
+\input{topics/SE_programming/nodejs/electron}   
+
+\end{document}

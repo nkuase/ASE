@@ -1,0 +1,57 @@
+
+
+\begin{frame}[fragile]{JavaScript String}
+
+\begin{itemize}
+	\item Java has a char type (primitive value) and a String (reference type object), and we use \verb|'.'| to represent a character and \verb|''...''| for a Java String (CSC 260). 
+	\item JavaScript has only strings, and we use one notation \verb|'...'|, and we can concatenate strings and variables using the '+' operator like Java (line 2). 
+	\item We also can interpolate strings (using variables in a string) with \verb|`...`| (reverse quotation) and \$\{...\} as in line 3.
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\tiny]% 
+
+var cruel = 'cruel';
+var line = 'hello ' + cruel + ' world';
+var line2 = `hello ${cruel} world`;
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{JavaScript Tagged List}
+
+\begin{itemize}
+	\item When the interpolated string is used as an argument to a function, the function can analyze the input to extract values. 
+	\item We call this feature `tagged list.'
+	\item In this example, the analyzer function parses the string argument to retrieve var1 and var2. 
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+var pants = 0; var socks = 100
+function analyzer(string, var1, var2) {
+    if(var1 == 0){
+      console.log(`Pants are sold out, Socks:` + var2);
+    }
+}
+analyzer`pants${pants} socks${socks}`
+\end{lstlisting}%   
+\end{Code}%
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\begin{itemize}
+	\item Notice that this code is output from Quokka extension.
+	\item It displays parsed input results in lines 87 - 89. 
+	\item In other words, the values in any interpolated string can be retrieved using this method. 
+\end{itemize} 
+
+\begin{center}
+\includegraphics[width=0.9\textwidth]{topics/SE_programming/javascript/pic/string/string2.png}
+\end{center} 
+
+\end{frame}

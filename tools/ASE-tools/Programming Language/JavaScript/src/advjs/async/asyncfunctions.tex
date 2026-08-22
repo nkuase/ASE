@@ -1,0 +1,27 @@
+\begin{frame}[fragile]{What are Async Functions?}
+
+\begin{itemize}
+	\item The term async function is a misnomer: if you call a function, your program simply won't continue until that function returns.
+	\item A function ``async'' is that it can cause another function (called a callback when it's passed as an argument to the function) to run later, from the callback \underbar{queue}. 
+	\item So, an async function that takes a callback will never fail this test
+\end{itemize}
+
+\begin{Code}{}%
+\begin{lstlisting}[firstnumber=1, label=glabels, xleftmargin=0pt, basicstyle=\scriptsize]% 
+
+var functionHasReturned = false; 
+asyncFunction(function() {console.assert(functionHasReturned);});
+functionHasReturned = true;
+\end{lstlisting}%   
+\end{Code}%
+\end{frame}
+
+\begin{frame}[fragile]{What is Nonblocking?}
+
+\begin{itemize}
+	\item Noblocking means how speedy async functions can be: a query made with an async MySQL driver may take an hour, but the function that sent the query will return in a matter of microseconds when a callback function is given.
+	\item Web servers that need to quickly process a high volume of incoming requests without wasting their time by just waiting. 
+	\item The callback function will be pushed into the \textit{callback queue} when the query results are received from the MySQL driver. 
+\end{itemize}
+
+\end{frame}
