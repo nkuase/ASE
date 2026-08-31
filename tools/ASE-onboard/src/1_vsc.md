@@ -160,7 +160,7 @@ Shortcuts are easy to use, but you can always use Command Palette (view -> Comma
 | Toggle Terminal | `` Ctrl+` `` | `` Cmd+` `` |
 | Save | `Ctrl+S` | `Cmd+S` |
 | Find | `Ctrl+F` | `Cmd+F` |
-| Replace | `Ctrl+H` | `Cmd+Alt+F` |
+| Replace | `Ctrl+H` | `Cmd+Option+F` |
 | Comment Line | `Ctrl+/` | `Cmd+/` |
 
 ---
